@@ -49,6 +49,13 @@ namespace Bevasarlo
                 MessageBox.Show("Kérlek, válassz ki egy tételt a törléshez.", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
+        private void RemoveAllButton_Click(object sender, RoutedEventArgs e)
+        {
+            shoppingList.Clear();
+            UpdateShoppingList();
+        }
+
         private void UpdateShoppingList()
         {
             ShoppingListBox.ItemsSource = null;
