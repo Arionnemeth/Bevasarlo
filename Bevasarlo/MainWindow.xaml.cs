@@ -37,6 +37,18 @@ namespace Bevasarlo
             }
         }
 
+        private void RemoveItemButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ShoppingListBox.SelectedItem != null)
+            {
+                shoppingList.Remove(ShoppingListBox.SelectedItem.ToString());
+                UpdateShoppingList();
+            }
+            else
+            {
+                MessageBox.Show("Kérlek, válassz ki egy tételt a törléshez.", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
         private void UpdateShoppingList()
         {
             ShoppingListBox.ItemsSource = null;
