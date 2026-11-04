@@ -16,9 +16,31 @@ namespace Bevasarlo
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<string> shoppingList = new List<string>();
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void AddItemButton_Click(object sender, RoutedEventArgs e)
+        {
+            string item = ItemTextBox.Text.Trim();
+            if (!string.IsNullOrEmpty(item))
+            {
+                shoppingList.Add(item);
+                UpdateShoppingList();
+                ItemTextBox.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Kérlek, adj meg egy tételt a bevásárlólistához.", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void UpdateShoppingList()
+        {
+            ShoppingListBox.ItemsSource = null;
+            ShoppingListBox.ItemsSource = shoppingList;
         }
     }
 }
