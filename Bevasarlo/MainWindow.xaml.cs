@@ -20,6 +20,7 @@ namespace Bevasarlo
         public MainWindow()
         {
             InitializeComponent();
+            EnterKeyDownHandler();
         }
 
         private void AddItemButton_Click(object sender, RoutedEventArgs e)
@@ -68,6 +69,17 @@ namespace Bevasarlo
         private void UpdateItemCount()
         {
             ItemCountLabel.Content = $"Összesen: {shoppingList.Count} tétel";
+        }
+
+        private void EnterKeyDownHandler()
+        {
+            ItemTextBox.KeyDown += (sender, e) =>
+            {
+                if (e.Key == Key.Enter)
+                {
+                    AddItemButton_Click(sender, e);
+                }
+            };
         }
     }
 }
