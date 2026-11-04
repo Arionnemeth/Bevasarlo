@@ -30,6 +30,7 @@ namespace Bevasarlo
                 shoppingList.Add(item);
                 UpdateShoppingList();
                 ItemTextBox.Clear();
+                UpdateItemCount();
             }
             else
             {
@@ -43,6 +44,7 @@ namespace Bevasarlo
             {
                 shoppingList.Remove(ShoppingListBox.SelectedItem.ToString());
                 UpdateShoppingList();
+                UpdateItemCount();
             }
             else
             {
@@ -54,12 +56,18 @@ namespace Bevasarlo
         {
             shoppingList.Clear();
             UpdateShoppingList();
+            UpdateItemCount();
         }
 
         private void UpdateShoppingList()
         {
             ShoppingListBox.ItemsSource = null;
             ShoppingListBox.ItemsSource = shoppingList;
+        }
+
+        private void UpdateItemCount()
+        {
+            ItemCountLabel.Content = $"Összesen: {shoppingList.Count} tétel";
         }
     }
 }
