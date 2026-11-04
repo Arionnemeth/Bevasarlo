@@ -7,16 +7,30 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Margin="10">
-        <StackPanel>
-            <TextBlock Text="Bevásárlólista" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
-            <ListBox x:Name="ShoppingListBox" Height="300" Margin="0,0,0,10"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="187*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.RowSpan="2" Background="#FF13F1F9">
+            <TextBlock Text="Bevásárlólista" FontSize="24" FontWeight="Bold" Margin="0,0,0,10" TextAlignment="Center" FontFamily="Papyrus" Foreground="Red"/>
+            <ListBox x:Name="ShoppingListBox" Height="300" Margin="0,0,0,10" Foreground="Black" Background="#FF00FFBE" FontSize="18"/>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="ItemTextBox" Width="200" Margin="0,0,10,0"/>
-                <Button x:Name="AddItemButton" Content="Hozzáadás" Click="AddItemButton_Click"/>
-                <Button x:Name="RemoveItemButton" Content="Törlés" Click="RemoveItemButton_Click" Margin="10,0,0,0"/>
-                <Button x:Name="RemoveAllButton" Content="Összes törlése" Click="RemoveAllButton_Click" Margin="10,0,0,0"/>
-                <Label x:Name="ItemCountLabel" Content="0 tétel" Margin="10,0,0,0"/>
+                <Button x:Name="AddItemButton" Content="Hozzáadás" Click="AddItemButton_Click" Foreground="White" Background="#FF25CE15" Width="100" FontSize="20"/>
+                <Button x:Name="RemoveItemButton" Content="Törlés" Click="RemoveItemButton_Click" Margin="10,0,0,0" Background="Red" Foreground="White" Width="80" FontSize="20"/>
+                <Button x:Name="RemoveAllButton" Content="Összes törlése" Click="RemoveAllButton_Click" Margin="10,0,0,0" Foreground="White">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="#FFF42323" Offset="1"/>
+                            <GradientStop Color="#FF100202" Offset="0.066"/>
+                            <GradientStop Color="#FFEEA8A8" Offset="0.066"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Label x:Name="ItemCountLabel" Content="Összesen: 0 tétel" Background="{x:Null}" Foreground="Black" FontSize="20"/>
             </StackPanel>
         </StackPanel>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" Width="780"/>
     </Grid>
 </Window>
